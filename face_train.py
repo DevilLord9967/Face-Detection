@@ -8,7 +8,7 @@ import pickle
 def train():
     BASE_DIR=os.path.dirname(os.path.abspath(__file__))
     IMG_DIR=os.path.join(BASE_DIR,'images')
-    cascPath = r'D:\0MY FILES\DEEP@K\CS Project\PYTHON\ML and Data Science\0Projects\Face detection AI\haarcascade_frontalface_alt2.xml'
+    cascPath = r'haarcascade_frontalface_alt2.xml'
     faceCascade = cv2.CascadeClassifier(cascPath)
     recogniser=cv2.face.LBPHFaceRecognizer_create()
     x_img=[]
@@ -32,8 +32,8 @@ def train():
                     print(path)
                     y_labels.append(count)
     print(label_id)
-    with open(r"ML and Data Science\0Projects\Face detection AI\labels.pickle",'wb') as f:
+    with open(r"labels.pickle",'wb') as f:
         pickle.dump(label_id,f)
     recogniser.train(x_img,np.array(y_labels))
-    recogniser.save(r"ML and Data Science\0Projects\Face detection AI\trainer.yml")
+    recogniser.save(r"trainer.yml")
 train()
