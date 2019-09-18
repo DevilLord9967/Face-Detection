@@ -2,13 +2,13 @@ def run():
     import cv2
     import pickle
     labels={}
-    with open(r'D:\0MY FILES\DEEP@K\CS Project\PYTHON\ML and Data Science\0Projects\Face detection AI\labels.pickle','rb') as f:
+    with open(r'labels.pickle','rb') as f:
         l=pickle.load(f)
         labels={v:k for k,v in l.items()}
-    cascPath = r'D:\0MY FILES\DEEP@K\CS Project\PYTHON\ML and Data Science\0Projects\Face detection AI\haarcascade_frontalface_alt2.xml'
+    cascPath = r'haarcascade_frontalface_alt2.xml'
     faceCascade = cv2.CascadeClassifier(cascPath)
     recogniser=cv2.face.LBPHFaceRecognizer_create()
-    recogniser.read(r"D:\0MY FILES\DEEP@K\CS Project\PYTHON\ML and Data Science\0Projects\Face detection AI\trainer.yml")
+    recogniser.read(r"trainer.yml")
     video_capture = cv2.VideoCapture(0)
 
     while True:
